@@ -1,0 +1,61 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>测试程序JavaScript</title>
+
+
+<script language="JavaScript1.2">
+
+  function ReadCard_onclick()
+  {
+	var file;
+		
+  	file = UploadActiveX.GetFileStream("C:\\tmp.bmp");
+	
+	alert(file.FileName);
+	alert(file.FileStr);
+	alert(file.FileStrN);
+	alert(file.Msg);
+  }
+  
+</script>
+
+</head>
+<body leftmargin="0" topmargin="0">
+<p>
+<object classid="clsid:83C1F24A-56C0-4882-87A2-E49295536527" id="UploadActiveX" codeBase="UploadActiveXSetup.CAB#version=1,0,0,0" width="0" height="0" >
+</object>
+</p>
+<form method="POST" action="--WEBBOT-SELF--" name="form1"> 
+  <input type="button" value="读取" name="ReadCardBtn" onclick="ReadCard_onclick()">
+</form>
+
+<p>
+    上传文件 ： <input type="file" name = "file" id = "fileId" /> 
+  <input type="button" value="读取" name="ReadCardBtn" onclick="getFile()">
+  <input type="button" value="读取2" name="ReadCardBtn" onclick="GetFilesss()">
+</p>
+    <script type="text/javascript">
+    function getFile() {
+    //js写法        
+    var file=document.getElementById('fileId').files[0];//获取文件流
+    var fileName =  file.name;//获取文件名
+    //jq写法
+    var file = $('#fileId')[0].files[0];
+  }
+  
+  
+        function GetFilesss(isFromUpload) {
+            var sfso = new ActiveXObject("Scripting.FileSystemObject");
+            var cPath = 'C:/tmp.bmp';
+			var f = sfso.OpenTextFile(cPath);
+            var bbb = f.ReadAll();
+        }
+		
+		
+		
+</script>
+</body>
+
+</html>
